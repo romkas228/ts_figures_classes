@@ -22,14 +22,14 @@ export class Triangle implements Figure {
     public c: number,
   ) {
     if (this.a <= 0 || this.b <= 0 || this.c <= 0) {
-      throw new Error('lengths are incorrect');
+      throw new Error('side a must be > 0');
     }
 
     const longestSide: number = Math.max(this.a, this.b, this.c);
     const sumOfSides: number = this.a + this.b + this.c;
 
     if (longestSide >= sumOfSides - longestSide) {
-      throw new Error('lengths are incorrect');
+      throw new Error("sides 1, 2 and 3 can't form a Triangle");
     }
   }
 
@@ -54,14 +54,12 @@ export class Circle implements Figure {
     public radius: number,
   ) {
     if (this.radius <= 0) {
-      throw new Error('radius is incorrect');
+      throw new Error('radius must be > 0');
     }
   }
 
   getArea(): number {
-    const area = Math.PI * Math.pow(this.radius, 2);
-
-    return Math.floor(area * 100) / 100;
+    return Math.floor(Math.PI * Math.pow(this.radius, 2) * 100) / 100;
   }
 }
 
@@ -76,7 +74,7 @@ export class Rectangle implements Figure {
     public height: number,
   ) {
     if (this.width <= 0 || this.height <= 0) {
-      throw new Error('incorrect height or width');
+      throw new Error('width and height must be > 0');
     }
   }
 
