@@ -22,14 +22,14 @@ export class Triangle implements Figure {
     public c: number,
   ) {
     if (this.a <= 0 || this.b <= 0 || this.c <= 0) {
-      throw new Error('length are incorrect');
+      throw new Error('lengths are incorrect');
     }
 
     const longestSide: number = Math.max(this.a, this.b, this.c);
     const sumOfSides: number = this.a + this.b + this.c;
 
     if (longestSide >= sumOfSides - longestSide) {
-      throw new Error('length are incorrect');
+      throw new Error('lengths are incorrect');
     }
   }
 
