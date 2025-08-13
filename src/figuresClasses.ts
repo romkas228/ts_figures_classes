@@ -22,7 +22,7 @@ export class Triangle implements Figure {
     public c: number,
   ) {
     if (this.a <= 0 || this.b <= 0 || this.c <= 0) {
-      throw new Error('side a must be > 0');
+      throw new Error('sides must be > 0');
     }
 
     const longestSide: number = Math.max(this.a, this.b, this.c);
@@ -36,12 +36,16 @@ export class Triangle implements Figure {
   getArea(): number {
     const semiperimeter: number = (this.a + this.b + this.c) / 2;
 
-    return +Math.sqrt(
-      semiperimeter *
-        (semiperimeter - this.a) *
-        (semiperimeter - this.b) *
-        (semiperimeter - this.c),
-    ).toFixed(2);
+    return (
+      Math.floor(
+        Math.sqrt(
+          semiperimeter *
+            (semiperimeter - this.a) *
+            (semiperimeter - this.b) *
+            (semiperimeter - this.c),
+        ) * 100,
+      ) / 100
+    );
   }
 }
 
@@ -79,7 +83,7 @@ export class Rectangle implements Figure {
   }
 
   getArea(): number {
-    return +(this.width * this.height).toFixed(2);
+    return Math.floor(this.width * this.height * 100) / 100;
   }
 }
 
